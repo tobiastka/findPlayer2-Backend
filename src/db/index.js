@@ -2,8 +2,16 @@
 import Sequelize from 'sequelize'
 import config from '../config/index.js'
 
+const { db } = config
+
 const sequelize = new Sequelize({
-  ...config.db
+  database: db.database,
+  username: db.username,
+  password: db.password,
+  host: db.host,
+  dialect: db.dialect,
+  port: db.port,
+  logging: db.logging
 })
 
 sequelize.authenticate()
