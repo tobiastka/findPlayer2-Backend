@@ -2,8 +2,10 @@ import express from 'express'
 import config from './config/index.js'
 import morgan from 'morgan'
 import sequelize from './db/index.js'
-import './db/models/User.js'
 import apiRounter from './routes/index.js'
+
+// * DB MODELS
+import './models/User.js'
 
 const app = express()
 app.use(morgan('tiny'))
@@ -16,5 +18,5 @@ app.use('/api', apiRounter)
 
 app.listen(config.app.port, async () => {
   console.log(`Servidor corriendo en el puerto ${config.app.port}`)
-  await sequelize.sync({ force: false })
+  await sequelize.sync({ force: true })
 })
