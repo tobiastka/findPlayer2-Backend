@@ -10,16 +10,18 @@ if (envFound.error) {
 
 export default {
   app: {
-    port: parseInt(process.env.PORT, 10),
-    apiPrefix: process.env.API_PREFIX
+    port: Number(process.env.APP_PORT)
   },
   logs: {
     morgan: process.env.MORGAN
   },
-  mysql: {
+  db: {
+    database: process.env.DB_DATABASE,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_SCHEMA
+    dialect: process.env.DB_DIALECT,
+    port: process.env.DB_PORT,
+    logging: Boolean(Number(process.env.DB_LOGGING))
   }
 }
